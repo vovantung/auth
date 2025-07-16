@@ -120,7 +120,7 @@ spec:
     - host: backend.txuapp.com
       http:
         paths:
-          - path: /auth
+          - path: /
             pathType: Prefix
             backend:
               service:
