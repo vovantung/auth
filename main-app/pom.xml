@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.5</version>
+        <version>3.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>txu</groupId>
@@ -142,7 +142,7 @@
     </dependencies>
 
     <build>
-        <finalName>hrm</finalName>
+        <finalName>auth</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -177,7 +177,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>txu.hrm.mainapp.MainAppApplication</mainClass>
+                            <mainClass>txu.auth.mainapp.MainAppApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -1,0 +1,188 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+  namespace: backend
+  labels:
+    app: auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: 211125364313.dkr.ecr.ap-southeast-1.amazonaws.com/auth:__VERSION__
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: backend-logs
+              mountPath: /logs
+          resources:
+            requests:
+              cpu: "1000m"
+            limits:
+              cpu: "1000m"
+      volumes:
+        - name: backend-logs
+          nfs:
+            server: 192.168.98.150
+            path: /mnt/data/nfs/backend_logs
+      imagePullSecrets:
+        - name: ecr-secret
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: auth
+  namespace: backend
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: auth
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: hrm
+#spec:
+#  selector:
+#    app: hrm
+#  ports:
+#    - name: http
+#      protocol: TCP
+#      port: 8080
+#      targetPort: 8080
+#  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth
+  namespace: backend
+  labels:
+    app: auth   # Phải trùng với ServiceMonitor
+spec:
+  ports:
+    - name: http   # Phải trùng với ServiceMonitor endpoints.port
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: auth
+
+---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: node-port-app1
+#spec:
+#  selector:
+#    app: app1
+#  type: NodePort
+#  ports:
+#    - port: 8080
+#      targetPort: 8080
+#      nodePort: 30001
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auth
+  namespace: backend
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-http01
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - backend.txuapp.com
+      secretName: auth-tls
+  rules:
+    - host: backend.txuapp.com
+      http:
+        paths:
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service:
+                name: kong-proxy-auth
+                port:
+                  number: 80
+
+---
+# File: kong-proxy-externalname.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: kong-proxy-auth
+  namespace: backend
+spec:
+  type: ExternalName
+  externalName: kong-proxy.kong.svc.cluster.local.
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auth-kong-ingress
+  namespace: backend
+  annotations:
+    konghq.com/strip-path: "true"
+#    konghq.com/plugins: jwt-auth    # Gắn plugin vào route
+spec:
+  ingressClassName: kong            # KIC sẽ quản lý Ingress được gắn ingress-class của mình, nếu được gắn thêm plugins của KIC thì KIC sẽ sync route này vào Kong (admin, proxy)
+  rules:
+    - host: backend.txuapp.com
+      http:
+        paths:
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service:
+                name: auth
+                port:
+                  number: 8080
+
+---
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: auth-service-monitor
+  namespace: backend
+  labels:
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: auth
+  endpoints:
+    - port: http
+      path: /actuator/prometheus
+      interval: 15s
+      scheme: http
+
+
