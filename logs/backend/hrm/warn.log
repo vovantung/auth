@@ -1,0 +1,8 @@
+2025-07-16 20:54:58.324 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-16 20:54:59.311 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-16 20:55:15.330 WARN  [http-nio-8080-exec-2] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-07-16 20:55:25.456 WARN  [http-nio-8080-exec-7] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-07-16 20:55:39.457 WARN  [http-nio-8080-exec-5] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-07-16 20:58:46.309 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-16 20:58:47.302 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-16 21:02:45.218 WARN  [http-nio-8080-exec-4] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
