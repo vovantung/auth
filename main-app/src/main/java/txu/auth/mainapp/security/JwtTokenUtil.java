@@ -74,7 +74,7 @@ public class JwtTokenUtil implements Serializable {
 				.setSubject(subject)
 				.setIssuer("txu-iss")	// Giá trị này cung cấp cho KIC dựa vào đó để lấy Secret chưa credentials nào ra để verify token.
 				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY*1000))
+				.setExpiration(new Date(System.currentTimeMillis() + 259200000)) // # Hết hạn sau 3 ngày
 				.signWith(SignatureAlgorithm.HS256, key)
 				.setHeaderParam("alg", "HS256")
 				.setHeaderParam("typ", "JWT")		// Cần đặt kiểu auth để KIC áp vào verify token thích hợp
