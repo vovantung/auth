@@ -59,6 +59,7 @@ public class JwtTokenUtil implements Serializable {
 
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
+		claims.put("role", userDetails.getAuthorities().iterator().next().getAuthority());
 		return doGenerateToken(claims, userDetails.getUsername());
 	}
 
@@ -72,6 +73,7 @@ public class JwtTokenUtil implements Serializable {
 		return   Jwts.builder()
 				.setClaims(claims)
 				.setSubject(subject)
+
 				.setIssuer("txu-iss")	// Giá trị này cung cấp cho KIC dựa vào đó để lấy Secret chưa credentials nào ra để verify token.
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + 259200000)) // # Hết hạn sau 3 ngày

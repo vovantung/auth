@@ -1,6 +1,6 @@
 <configuration>
     <!-- Thư mục log -->
-    <property name="LOG_HOME" value="logs/backend/hrm" />
+    <property name="LOG_HOME" value="logs/backend/auth" />
 
     <!-- Appender ghi log ra console -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
