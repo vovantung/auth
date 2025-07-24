@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import txu.auth.mainapp.dto.UserDto;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.io.Serializable;
@@ -43,8 +44,13 @@ public class JwtTokenUtil implements Serializable {
 	}
 
 	private Claims getAllClaimsFromToken(String token) {
-		Key key = new SecretKeySpec(secret.getBytes(), "HS256");
-		return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
+		try{
+			Key key = new SecretKeySpec(secret.getBytes(), "HS256");
+			return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+
 	}
 
 	private Boolean isTokenExpired(String token) {
@@ -63,6 +69,12 @@ public class JwtTokenUtil implements Serializable {
 		return doGenerateToken(claims, userDetails.getUsername());
 	}
 
+	public String generateTokenTXU(UserDto user) {
+		Map<String, Object> claims = new HashMap<>();
+		claims.put("role", user.getRole());
+		return doGenerateToken(claims, user.getUsername());
+	}
+
 	private String doGenerateToken(Map<String, Object> claims, String subject) {
 
 		Key key = new SecretKeySpec(secret.getBytes(), "HS256");
@@ -73,7 +85,6 @@ public class JwtTokenUtil implements Serializable {
 		return   Jwts.builder()
 				.setClaims(claims)
 				.setSubject(subject)
-
 				.setIssuer("txu-iss")	// Giá trị này cung cấp cho KIC dựa vào đó để lấy Secret chưa credentials nào ra để verify token.
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + 259200000)) // # Hết hạn sau 3 ngày

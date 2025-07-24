@@ -20,7 +20,7 @@ public class Api extends AbstractApi {
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest jwtRequest) {
-        JwtResponse jwtResponse = authenticateService.authenticateUer(jwtRequest.getUsername(), jwtRequest.getPassword());
+        JwtResponse jwtResponse = authenticateService.authenticateUerTXU(jwtRequest.getUsername(), jwtRequest.getPassword());
         if (jwtResponse == null) {
             throw new BadParameterException("Username or password is incorrect");
         }

@@ -16,10 +16,15 @@ import java.util.Date;
 @Table(name = "ACCOUNT")
 public class AccountEntity implements Serializable {
 
-    @Getter
+//    @Getter
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "emp_seq_gen")
+//    @SequenceGenerator(name = "emp_seq_gen", sequenceName = "EMP_SEQ", allocationSize = 1)
+//    @Column(name = "ID")
+//    private Long id;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "emp_seq_gen")
-    @SequenceGenerator(name = "emp_seq_gen", sequenceName = "EMP_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 

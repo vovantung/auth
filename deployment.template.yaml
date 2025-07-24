@@ -126,21 +126,21 @@ spec:
 
 ---
 
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: auth-service-monitor
-  namespace: backend
-  labels:
-    release: monitoring
-spec:
-  selector:
-    matchLabels:
-      app: auth
-  endpoints:
-    - port: http
-      path: /actuator/prometheus
-      interval: 15s
-      scheme: http
+#apiVersion: monitoring.coreos.com/v1
+#kind: ServiceMonitor
+#metadata:
+#  name: auth-service-monitor
+#  namespace: backend
+#  labels:
+#    release: monitoring
+#spec:
+#  selector:
+#    matchLabels:
+#      app: auth
+#  endpoints:
+#    - port: http
+#      path: /actuator/prometheus
+#      interval: 15s
+#      scheme: http
 
 
