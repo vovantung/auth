@@ -28,7 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             return null;
         }
 
-        String[] roles = user.getRole().split(",");
+        String[] roles = user.getRole().getName().split(",");
 
         return User.withUsername(user.getUsername()).password(user.getPassword()).roles(roles).build();
     }
@@ -43,7 +43,9 @@ public class CustomUserDetailsService implements UserDetailsService {
         UserDto userDto = new UserDto();
         userDto.setUsername(user.getUsername());
         userDto.setPassword(user.getPassword());
-        String[] roles = user.getRole().split(",");
+        String[] roles = user.getRole().getName().split(",");
+        // Tạm ử dụng logic cũ, xem đây là một chuỗi chứa nhiều roles ngăn cách
+        // nhau bởi dấu phẩy, tuy nhiên hiện tại role là duy nhất
         userDto.setRole(String.join(",", roles));
         return userDto;
     }

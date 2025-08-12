@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>txu</groupId>
 	<artifactId>auth</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>auth</name>
 	<description>auth</description>
 	<packaging>pom</packaging>
