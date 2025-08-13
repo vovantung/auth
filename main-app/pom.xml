@@ -33,7 +33,7 @@
         <repository>
             <id>nexus</id>
 <!--            <url>http://localhost:8081/repository/maven-releases/</url>-->
-            <url>https://nexus.txuapp.com/repository/maven-releases/</url>
+            <url>https://nexus.txuyen.com/repository/maven-releases/</url>
         </repository>
     </repositories>
     <dependencies>
