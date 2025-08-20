@@ -5,9 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import txu.auth.mainapp.base.AbstractApi;
+import txu.auth.mainapp.entity.AccountEntity;
 import txu.auth.mainapp.security.AuthenticationService;
 import txu.auth.mainapp.security.JwtRequest;
 import txu.auth.mainapp.security.JwtResponse;
+import txu.auth.mainapp.service.AccountService;
 import txu.common.exception.BadParameterException;
 
 @Slf4j
@@ -17,6 +19,7 @@ import txu.common.exception.BadParameterException;
 public class Api extends AbstractApi {
 
     private final AuthenticationService authenticateService;
+    private final AccountService accountService;
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest jwtRequest) {
@@ -25,6 +28,11 @@ public class Api extends AbstractApi {
             throw new BadParameterException("Username or password is incorrect");
         }
         return ResponseEntity.ok(jwtResponse);
+    }
+
+    @GetMapping(value = "get-current-user")
+    public AccountEntity getCurrentUser() {
+        return accountService.getCurrentUser();
     }
 
 }

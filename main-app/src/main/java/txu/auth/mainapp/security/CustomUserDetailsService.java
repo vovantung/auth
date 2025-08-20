@@ -2,6 +2,7 @@ package txu.auth.mainapp.security;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,6 +11,13 @@ import org.springframework.stereotype.Service;
 import txu.auth.mainapp.dao.AccountDao;
 import txu.auth.mainapp.dto.UserDto;
 import txu.auth.mainapp.entity.AccountEntity;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -19,20 +27,28 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final AccountDao accountDao;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public CustomUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        AccountEntity user = accountDao.findByUsername(username);
+        AccountEntity user = accountDao.getByUsername(username);
 
         if (user == null) {
             log.error("User not found");
             return null;
         }
 
-        String[] roles = user.getRole().getName().split(",");
+//        String[] roles = user.getRole().split(",");
+        String[] roles = user.getRole().getName().split(","); // Tạm giữ logic cũ, ở đây là môt chuỗi gồm các role cách nhau  bởi dâu phẩy
+        // Trên thực tế đây là một role duy nhất
 
-        return User.withUsername(user.getUsername()).password(user.getPassword()).roles(roles).build();
+        List<GrantedAuthority> authorities = Arrays.stream(roles)
+                .map(String::trim)
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+
+//        return User.withUsername(user.getUsername()).password(user.getPassword()).roles(roles).build();
+
+        return new CustomUserDetails(user.getId(),user.getUsername(),user.getPassword(), user.getEmail(), user.getDepartment().getId(), authorities);
     }
-
 
     public UserDto loadUserByUsernameTXU(String username)  {
         AccountEntity user = accountDao.findByUsername(username);

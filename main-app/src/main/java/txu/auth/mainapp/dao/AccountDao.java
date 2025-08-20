@@ -1,6 +1,5 @@
 package txu.auth.mainapp.dao;
 
-import com.amazonaws.util.StringUtils;
 import jakarta.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
