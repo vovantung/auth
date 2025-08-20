@@ -1,14 +1,1 @@
-2025-08-07 23:16:47.200 ERROR [main] o.s.b.d.LoggingFailureAnalysisReporter - 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Web server failed to start. Port 8080 was already in use.
-
-Action:
-
-Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
-
+2025-08-20 09:15:02.165 ERROR [http-nio-8081-exec-4] t.a.m.s.CustomUserDetailsService - User not found

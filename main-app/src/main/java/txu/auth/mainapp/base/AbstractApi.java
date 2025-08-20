@@ -1,5 +1,6 @@
 package txu.auth.mainapp.base;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
@@ -9,6 +10,8 @@ import txu.common.exception.TxException;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 public abstract class AbstractApi {
@@ -123,10 +126,21 @@ public abstract class AbstractApi {
         writeError(response, throwable.getClass().getSimpleName(), throwable.getMessage());
     }
 
+//    private void writeError(HttpServletResponse response, String className, String message) throws IOException {
+//        String body = String.format(
+//                HTTP_RESPONSE_ERROR_BODY_JSON_FORMAT, className, message);
+//        response.setContentType("application/json;charset=UTF-8");
+//        IOUtils.write(body, response.getOutputStream(), StandardCharsets.UTF_8);
+//    }
+
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
     private void writeError(HttpServletResponse response, String className, String message) throws IOException {
-        String body = String.format(
-                HTTP_RESPONSE_ERROR_BODY_JSON_FORMAT, className, message);
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("errorType", className);
+        errorMap.put("errorMessage", message);
+
         response.setContentType("application/json;charset=UTF-8");
-        IOUtils.write(body, response.getOutputStream(), StandardCharsets.UTF_8);
+        objectMapper.writeValue(response.getOutputStream(), errorMap);
     }
 }
