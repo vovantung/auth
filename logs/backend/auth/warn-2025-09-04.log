@@ -1,0 +1,23 @@
+2025-09-04 09:02:29.195 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-04 09:02:30.848 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-04 09:03:11.001 WARN  [http-nio-8081-exec-1] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 09:03:11.882 WARN  [http-nio-8081-exec-3] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 10:06:53.176 WARN  [http-nio-8081-exec-6] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 10:06:53.213 WARN  [http-nio-8081-exec-8] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 10:11:56.717 WARN  [http-nio-8081-exec-1] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 10:11:56.747 WARN  [http-nio-8081-exec-3] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 10:18:46.043 WARN  [http-nio-8081-exec-6] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 10:18:46.075 WARN  [http-nio-8081-exec-8] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 11:14:31.253 WARN  [http-nio-8081-exec-1] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 11:14:31.290 WARN  [http-nio-8081-exec-3] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 11:31:55.906 WARN  [http-nio-8081-exec-6] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 11:31:55.933 WARN  [http-nio-8081-exec-8] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-04 13:23:28.518 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h49m27s528ms475µs400ns).
+2025-09-04 13:23:28.542 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@61406bbc (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-04 13:23:28.553 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@6443bd68 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-04 13:23:28.555 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@6e1a09de (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-04 13:23:28.555 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@3b9e6bf6 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.

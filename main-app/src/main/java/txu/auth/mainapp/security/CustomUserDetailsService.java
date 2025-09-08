@@ -45,6 +45,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
 
+
 //        return User.withUsername(user.getUsername()).password(user.getPassword()).roles(roles).build();
 
         return new CustomUserDetails(user.getId(),user.getUsername(),user.getPassword(), user.getEmail(), user.getDepartment().getId(), authorities);

@@ -109,6 +109,7 @@ metadata:
   namespace: backend
   annotations:
     konghq.com/strip-path: "true"
+    konghq.com/plugins: txu-plugins     # Gắn plugin vào route
 #    konghq.com/plugins: jwt-auth    # Gắn plugin vào route
 spec:
   ingressClassName: kong            # KIC sẽ quản lý Ingress được gắn ingress-class của mình, nếu được gắn thêm plugins của KIC thì KIC sẽ sync route này vào Kong (admin, proxy)

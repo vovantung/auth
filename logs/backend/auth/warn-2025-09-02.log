@@ -1,0 +1,18 @@
+2025-09-02 14:58:16.675 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1d23h18m34s327ms417µs100ns).
+2025-09-02 14:58:16.701 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@7e942dd2 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-02 14:58:16.702 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@dcd8e00 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-02 14:58:16.719 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@65a67634 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-02 14:58:16.720 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@2a4d9a78 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-02 18:13:18.421 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h21m54s333ms876µs100ns).
+2025-09-02 18:13:18.428 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@49fcde4d (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-02 18:13:18.428 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@78e0cef6 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-02 18:13:18.430 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@6abdc7bc (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-02 18:13:18.432 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@590ba237 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.

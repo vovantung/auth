@@ -1,0 +1,60 @@
+2025-09-03 01:13:23.041 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@77a68164 (ORA-17900: Invalid operation, not connected.
+https://docs.oracle.com/error-help/db/ora-17900/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 08:15:12.510 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7h3m10s489ms364µs800ns).
+2025-09-03 08:15:12.512 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@26eab700 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 08:15:12.522 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@1177ab42 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 08:15:12.524 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@7268f1a1 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 08:15:12.525 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@2532370 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 08:19:41.183 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-03 08:19:42.572 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-03 08:20:08.939 WARN  [http-nio-8081-exec-1] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 08:20:09.569 WARN  [http-nio-8081-exec-4] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 09:13:11.148 WARN  [http-nio-8081-exec-7] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 09:13:11.203 WARN  [http-nio-8081-exec-8] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 10:01:58.766 WARN  [http-nio-8081-exec-1] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 10:01:58.811 WARN  [http-nio-8081-exec-4] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 10:50:09.962 WARN  [http-nio-8081-exec-7] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 10:50:10.008 WARN  [http-nio-8081-exec-8] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 10:55:42.091 WARN  [http-nio-8081-exec-4] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 10:55:42.130 WARN  [http-nio-8081-exec-6] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 11:27:47.096 WARN  [http-nio-8081-exec-8] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 11:27:47.135 WARN  [http-nio-8081-exec-10] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 11:58:37.302 WARN  [http-nio-8081-exec-9] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 11:58:37.346 WARN  [http-nio-8081-exec-1] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:03:56.071 WARN  [http-nio-8081-exec-7] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:03:56.073 WARN  [http-nio-8081-exec-5] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:03:56.106 WARN  [http-nio-8081-exec-10] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:05:39.479 WARN  [http-nio-8081-exec-6] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:05:39.492 WARN  [http-nio-8081-exec-7] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:05:54.703 WARN  [http-nio-8081-exec-5] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:05:54.710 WARN  [http-nio-8081-exec-8] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:06:19.516 WARN  [http-nio-8081-exec-10] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:06:19.523 WARN  [http-nio-8081-exec-9] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:06:27.504 WARN  [http-nio-8081-exec-1] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:06:27.526 WARN  [http-nio-8081-exec-3] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:06:49.432 WARN  [http-nio-8081-exec-4] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 12:06:49.456 WARN  [http-nio-8081-exec-2] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-03 15:55:16.850 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h49m29s58ms807µs800ns).
+2025-09-03 15:55:16.935 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@5d6f1938 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 15:55:16.953 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@fb4bd61 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 15:55:16.954 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@35ae18f2 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 15:55:16.954 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@2399af6b (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 18:45:09.726 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@274384be (ORA-17900: Invalid operation, not connected.
+https://docs.oracle.com/error-help/db/ora-17900/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 18:50:43.599 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@68380a8c (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 18:50:43.621 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m53s860ms821µs400ns).
+2025-09-03 18:50:43.637 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@14d4434d (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 18:50:43.649 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@71f0ad10 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-03 18:50:43.665 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@6a3735f7 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.

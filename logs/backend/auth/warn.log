@@ -1,107 +1,11 @@
-2025-08-20 09:11:47.481 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-08-20 09:11:48.811 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-08-20 09:12:11.631 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-08-20 09:12:12.957 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-08-20 09:14:25.966 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m3s657ms377µs999ns).
-2025-08-20 09:17:48.569 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52s559ms706µs800ns).
-2025-08-20 16:54:48.739 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-08-20 16:54:50.233 WARN  [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'api' defined in file [D:\06-05-2025\auth\main-app\target\classes\txu\auth\mainapp\api\Api.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'accountService': Injection of autowired dependencies failed
-2025-08-20 16:54:50.262 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [oracle.jdbc.diagnostics.Diagnostic.CLOCK] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/java.lang.Object.wait(Native Method)
- java.base@18.0.2/java.util.TimerThread.mainLoop(Timer.java:563)
- java.base@18.0.2/java.util.TimerThread.run(Timer.java:516)
-2025-08-20 16:54:50.264 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [oracle.jdbc.driver.BlockSource.ThreadedCachingBlockSource.BlockReleaser] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/jdk.internal.misc.Unsafe.park(Native Method)
- java.base@18.0.2/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
- java.base@18.0.2/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
- app//oracle.jdbc.internal.Monitor$WaitableMonitor.monitorWait(Monitor.java:325)
- app//oracle.jdbc.internal.Monitor$WaitableMonitor.monitorWait(Monitor.java:307)
- app//oracle.jdbc.driver.BlockSource$ThreadedCachingBlockSource$BlockReleaser.run(BlockSource.java:347)
-2025-08-20 16:54:50.264 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [InterruptTimer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/java.lang.Object.wait(Native Method)
- java.base@18.0.2/java.util.TimerThread.mainLoop(Timer.java:563)
- java.base@18.0.2/java.util.TimerThread.run(Timer.java:516)
-2025-08-20 16:54:50.266 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [OJDBC-WORKER-THREAD-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/jdk.internal.misc.Unsafe.park(Native Method)
- java.base@18.0.2/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
- java.base@18.0.2/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:401)
- java.base@18.0.2/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:903)
- java.base@18.0.2/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
- java.base@18.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
- java.base@18.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
- java.base@18.0.2/java.lang.Thread.run(Thread.java:833)
-2025-08-20 16:55:00.738 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-08-20 16:55:01.955 WARN  [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'api' defined in file [D:\06-05-2025\auth\main-app\target\classes\txu\auth\mainapp\api\Api.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'accountService': Injection of autowired dependencies failed
-2025-08-20 16:55:01.979 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [oracle.jdbc.diagnostics.Diagnostic.CLOCK] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/java.lang.Object.wait(Native Method)
- java.base@18.0.2/java.util.TimerThread.mainLoop(Timer.java:563)
- java.base@18.0.2/java.util.TimerThread.run(Timer.java:516)
-2025-08-20 16:55:01.981 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [oracle.jdbc.driver.BlockSource.ThreadedCachingBlockSource.BlockReleaser] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/jdk.internal.misc.Unsafe.park(Native Method)
- java.base@18.0.2/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
- java.base@18.0.2/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
- app//oracle.jdbc.internal.Monitor$WaitableMonitor.monitorWait(Monitor.java:325)
- app//oracle.jdbc.internal.Monitor$WaitableMonitor.monitorWait(Monitor.java:307)
- app//oracle.jdbc.driver.BlockSource$ThreadedCachingBlockSource$BlockReleaser.run(BlockSource.java:347)
-2025-08-20 16:55:01.981 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [InterruptTimer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/java.lang.Object.wait(Native Method)
- java.base@18.0.2/java.util.TimerThread.mainLoop(Timer.java:563)
- java.base@18.0.2/java.util.TimerThread.run(Timer.java:516)
-2025-08-20 16:55:01.982 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [OJDBC-WORKER-THREAD-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/jdk.internal.misc.Unsafe.park(Native Method)
- java.base@18.0.2/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
- java.base@18.0.2/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:401)
- java.base@18.0.2/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:903)
- java.base@18.0.2/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
- java.base@18.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
- java.base@18.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
- java.base@18.0.2/java.lang.Thread.run(Thread.java:833)
-2025-08-20 16:55:12.332 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-08-20 16:55:13.591 WARN  [main] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'api' defined in file [D:\06-05-2025\auth\main-app\target\classes\txu\auth\mainapp\api\Api.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'accountService': Injection of autowired dependencies failed
-2025-08-20 16:55:13.617 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [oracle.jdbc.diagnostics.Diagnostic.CLOCK] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/java.lang.Object.wait(Native Method)
- java.base@18.0.2/java.util.TimerThread.mainLoop(Timer.java:563)
- java.base@18.0.2/java.util.TimerThread.run(Timer.java:516)
-2025-08-20 16:55:13.618 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [oracle.jdbc.driver.BlockSource.ThreadedCachingBlockSource.BlockReleaser] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/jdk.internal.misc.Unsafe.park(Native Method)
- java.base@18.0.2/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
- java.base@18.0.2/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
- app//oracle.jdbc.internal.Monitor$WaitableMonitor.monitorWait(Monitor.java:325)
- app//oracle.jdbc.internal.Monitor$WaitableMonitor.monitorWait(Monitor.java:307)
- app//oracle.jdbc.driver.BlockSource$ThreadedCachingBlockSource$BlockReleaser.run(BlockSource.java:347)
-2025-08-20 16:55:13.618 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [InterruptTimer] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/java.lang.Object.wait(Native Method)
- java.base@18.0.2/java.util.TimerThread.mainLoop(Timer.java:563)
- java.base@18.0.2/java.util.TimerThread.run(Timer.java:516)
-2025-08-20 16:55:13.618 WARN  [main] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [OJDBC-WORKER-THREAD-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@18.0.2/jdk.internal.misc.Unsafe.park(Native Method)
- java.base@18.0.2/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
- java.base@18.0.2/java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:401)
- java.base@18.0.2/java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:903)
- java.base@18.0.2/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
- java.base@18.0.2/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
- java.base@18.0.2/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
- java.base@18.0.2/java.lang.Thread.run(Thread.java:833)
-2025-08-20 16:58:15.810 WARN  [main] org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-08-20 16:58:17.147 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-08-20 17:04:47.423 WARN  [http-nio-8081-exec-1] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:07:29.952 WARN  [http-nio-8081-exec-4] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:07:29.956 WARN  [http-nio-8081-exec-5] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:08:01.443 WARN  [http-nio-8081-exec-8] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:09:14.035 WARN  [http-nio-8081-exec-3] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:16:02.610 WARN  [http-nio-8081-exec-8] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:16:02.614 WARN  [http-nio-8081-exec-9] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:16:02.983 WARN  [http-nio-8081-exec-10] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:26:19.959 WARN  [http-nio-8081-exec-5] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:26:19.962 WARN  [http-nio-8081-exec-7] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:26:20.389 WARN  [http-nio-8081-exec-6] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:28:17.675 WARN  [http-nio-8081-exec-1] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:30:19.734 WARN  [http-nio-8081-exec-6] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:30:36.406 WARN  [http-nio-8081-exec-10] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:33:08.629 WARN  [http-nio-8081-exec-7] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:33:56.962 WARN  [http-nio-8081-exec-2] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:33:56.965 WARN  [http-nio-8081-exec-3] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:33:59.138 WARN  [http-nio-8081-exec-7] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:34:01.049 WARN  [http-nio-8081-exec-9] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:34:09.112 WARN  [http-nio-8081-exec-2] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
-2025-08-20 17:34:22.119 WARN  [http-nio-8081-exec-5] t.a.m.security.JwtRequestFilter - JWT Token does not begin with Bearer String
+2025-09-08 14:56:50.485 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16h43m46s296ms93µs100ns).
+2025-09-08 14:56:50.607 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@54a2d944 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-08 14:56:50.610 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@df7c1cb (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-08 14:56:50.668 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@3b22518d (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-08 14:56:50.668 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@64267924 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
+2025-09-08 14:56:50.669 WARN  [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection oracle.jdbc.driver.T4CConnection@49f3e8b2 (ORA-17008: Closed connection
+https://docs.oracle.com/error-help/db/ora-17008/). Possibly consider using a shorter maxLifetime value.
