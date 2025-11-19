@@ -32,7 +32,7 @@ spec:
       volumes:
         - name: backend-logs
           nfs:
-            server: 192.168.98.150
+            server: 192.168.1.60
             path: /mnt/data/nfs/backend_logs
       imagePullSecrets:
         - name: ecr-secret

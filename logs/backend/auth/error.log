@@ -1,0 +1,3 @@
+2025-10-01 11:05:15.115 ERROR [main] o.h.e.jdbc.spi.SqlExceptionHelper - ORA-01017: invalid username/password; logon denied
+
+https://docs.oracle.com/error-help/db/ora-01017/
