@@ -32,22 +32,9 @@ spec:
       volumes:
         - name: backend-logs
           persistentVolumeClaim:
-            claimName: pvc-auth-logs
+            claimName: pvc-backend-logs
       imagePullSecrets:
         - name: ecr-secret
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pvc-auth-logs
-  namespace: backend
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 10Gi
-  volumeName: pv-backend-logs
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
