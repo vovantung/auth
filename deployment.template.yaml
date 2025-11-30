@@ -31,11 +31,23 @@ spec:
               cpu: "1000m"
       volumes:
         - name: backend-logs
-          nfs:
-            server: 192.168.1.60
-            path: /mnt/data/nfs/backend_logs
+          persistentVolumeClaim:
+            claimName: pvc-auth-logs
       imagePullSecrets:
         - name: ecr-secret
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-auth-logs
+  namespace: backend
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  volumeName: pv-backend-logs
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
