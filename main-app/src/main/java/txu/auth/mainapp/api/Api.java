@@ -15,8 +15,8 @@ import txu.common.exception.BadParameterException;
 
 @Slf4j
 @RestController
-@RequestMapping()
 @RequiredArgsConstructor
+@RequestMapping("/auth")
 public class Api extends AbstractApi {
 
     private final AuthenticationService authenticateService;
@@ -42,12 +42,8 @@ public class Api extends AbstractApi {
     }
 
     @GetMapping(value = "/test")
-    public String test1() {
-        return "Vo Van Tung";
-    }
-
-    @GetMapping(value = "/auth/test")
     public String test() {
         return "Vo Van Tung";
     }
+
 }
