@@ -24,7 +24,7 @@ public class SecurityConfig {
 //                .csrf(csrf -> csrf.disable())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/public/**", "/authenticate", "/**").permitAll()
+                        .requestMatchers("/public/**", "/authenticate", "/test", "/**").permitAll()
 //                        .requestMatchers("/public/**", "/authenticate").permitAll()
 //                        .requestMatchers( "/product/**").hasRole("admin")
                         .anyRequest().authenticated()

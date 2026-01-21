@@ -41,11 +41,6 @@ public class Api extends AbstractApi {
         return accountService.getRole();
     }
 
-    @GetMapping(value = "test")
-    public String test() {
-        return "Vo Van Tung";
-    }
-
     @GetMapping(value = "/test")
     public String test1() {
         return "Vo Van Tung";
