@@ -46,4 +46,8 @@ public class Api extends AbstractApi {
         return "Vo Van Tung";
     }
 
+    @GetMapping(value = "/auth/test")
+    public String test() {
+        return "Vo Van Tung";
+    }
 }
