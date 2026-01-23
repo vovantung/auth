@@ -35,6 +35,10 @@ public class Api extends AbstractApi {
     @Value("${keycloak.introspect-url}")
     private String introspectUrl;
 
+    @Value("${keycloak.token-url}")
+    private String tokenUrl;
+
+
     @Value("${keycloak.client-id}")
     private String clientId;
 
@@ -70,9 +74,7 @@ public class Api extends AbstractApi {
     }
 
     @PostMapping(value = "/user-info")
-//    public Map<String, Object> userInfo(@RequestBody UserInfoRequest request, HttpServletRequest httpServletRequest) {
     public Map<String, Object> userInfo(HttpServletRequest httpServletRequest) {
-        HttpRequest httpRequest;
 
         String authHeader = httpServletRequest.getHeader("Authorization");
 
@@ -80,14 +82,11 @@ public class Api extends AbstractApi {
             return null;
         }
 
-//        return authHeader.substring(7); // bỏ "Bearer "
-
         // ----- Header -----
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
-        String basicAuth = Base64.getEncoder()
-                .encodeToString((clientId + ":" + clientSecret).getBytes(StandardCharsets.UTF_8));
+        String basicAuth = Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes(StandardCharsets.UTF_8));
         headers.set(HttpHeaders.AUTHORIZATION, "Basic " + basicAuth);
 
         // ----- Body -----
@@ -99,24 +98,37 @@ public class Api extends AbstractApi {
                 new HttpEntity<>(body, headers);
 
         // ----- Call -----
-        ResponseEntity<Map> response = restTemplate.exchange(
-                introspectUrl,
-                HttpMethod.POST,
-                req,
-                Map.class
-        );
+        ResponseEntity<Map> response = restTemplate.exchange(introspectUrl, HttpMethod.POST, req, Map.class);
 
         return response.getBody();
 
     }
 
     @PostMapping(value = "/authenticate1")
-    public ResponseEntity<?> authenticate1(@RequestBody JwtRequest jwtRequest) {
+    public Map<String, Object> authenticate1(@RequestBody JwtRequest jwtRequest) {
         JwtResponse jwtResponse = authenticateService.authenticateUerTXU(jwtRequest.getUsername(), jwtRequest.getPassword());
-        if (jwtResponse == null) {
-            throw new BadParameterException("Username or password is incorrect");
-        }
-        return ResponseEntity.ok(jwtResponse);
+        // ----- Header -----
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        String basicAuth = Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes(StandardCharsets.UTF_8));
+        headers.set(HttpHeaders.AUTHORIZATION, "Basic " + basicAuth);
+
+        // ----- Body -----
+        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+//        body.add("client_id", clientId);
+//        body.add("client_secret", clientSecret);
+        body.add("grant_type", "password");
+        body.add("username", jwtRequest.getUsername());
+        body.add("username", jwtRequest.getPassword());
+
+        HttpEntity<MultiValueMap<String, String>> req =
+                new HttpEntity<>(body, headers);
+
+        // ----- Call -----
+        ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, req, Map.class);
+
+        return response.getBody();
     }
 
 }
