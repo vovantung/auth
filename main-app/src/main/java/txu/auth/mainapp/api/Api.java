@@ -10,6 +10,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import txu.auth.mainapp.base.AbstractApi;
 import txu.auth.mainapp.dto.RoleDto;
+import txu.auth.mainapp.dto.UserDto;
 import txu.auth.mainapp.dto.UserExDto;
 import txu.auth.mainapp.dto.UserInfoRequest;
 import txu.auth.mainapp.entity.AccountEntity;
@@ -105,8 +106,7 @@ public class Api extends AbstractApi {
     }
 
     @PostMapping(value = "/authenticate1")
-    public Map<String, Object> authenticate1(@RequestBody JwtRequest jwtRequest) {
-        JwtResponse jwtResponse = authenticateService.authenticateUerTXU(jwtRequest.getUsername(), jwtRequest.getPassword());
+    public Map<String, Object> authenticate1(@RequestBody UserDto userDto) {
         // ----- Header -----
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -119,11 +119,10 @@ public class Api extends AbstractApi {
 //        body.add("client_id", clientId);
 //        body.add("client_secret", clientSecret);
         body.add("grant_type", "password");
-        body.add("username", jwtRequest.getUsername());
-        body.add("username", jwtRequest.getPassword());
+        body.add("username", userDto.getUsername());
+        body.add("password", userDto.getPassword());
 
-        HttpEntity<MultiValueMap<String, String>> req =
-                new HttpEntity<>(body, headers);
+        HttpEntity<MultiValueMap<String, String>> req = new HttpEntity<>(body, headers);
 
         // ----- Call -----
         ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, req, Map.class);
