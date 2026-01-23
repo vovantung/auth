@@ -46,4 +46,9 @@ public class AuthConfiguration implements GrpcConfig {
         return new RestTemplate(clientHttpRequestFactory());
     }
 
+//    @Bean
+//    public RestTemplate restTemplate(){
+//        return new RestTemplate();
+//    }
+
 }

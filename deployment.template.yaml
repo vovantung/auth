@@ -101,30 +101,29 @@ spec:
 #      nodePort: 30001
 
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: auth-kong-ingress
-  namespace: backend
-  annotations:
-    konghq.com/strip-path: "true"
-#    konghq.com/plugins: txu-plugins     # Gắn plugin vào route
-#    konghq.com/plugins: jwt-auth    # Gắn plugin vào route
-spec:
-  ingressClassName: kong            # KIC sẽ quản lý Ingress được gắn ingress-class của mình, nếu được gắn thêm plugins của KIC thì KIC sẽ sync route này vào Kong (admin, proxy)
-  rules:
-    - host: backend.txuyen.com
-      http:
-        paths:
-          - path: /auth
-            pathType: Prefix
-            backend:
-              service:
-                name: auth
-                port:
-                  number: 8080
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: auth-kong-ingress
+#  namespace: backend
+#  annotations:
+#    konghq.com/strip-path: "true"
+##    konghq.com/plugins: txu-plugins     # Gắn plugin vào route
+##    konghq.com/plugins: jwt-auth    # Gắn plugin vào route
+#spec:
+#  ingressClassName: kong            # KIC sẽ quản lý Ingress được gắn ingress-class của mình, nếu được gắn thêm plugins của KIC thì KIC sẽ sync route này vào Kong (admin, proxy)
+#  rules:
+#    - host: backend.txuyen.com
+#      http:
+#        paths:
+#          - path: /auth
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: auth
+#                port:
+#                  number: 8080
 
----
 
 #apiVersion: monitoring.coreos.com/v1
 #kind: ServiceMonitor
