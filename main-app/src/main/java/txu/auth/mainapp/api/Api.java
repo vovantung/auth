@@ -1,5 +1,6 @@
 package txu.auth.mainapp.api;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -69,7 +70,17 @@ public class Api extends AbstractApi {
     }
 
     @PostMapping(value = "/user-info")
-    public Map<String, Object> userInfo(@RequestBody UserInfoRequest request) {
+//    public Map<String, Object> userInfo(@RequestBody UserInfoRequest request, HttpServletRequest httpServletRequest) {
+    public Map<String, Object> userInfo(HttpServletRequest httpServletRequest) {
+        HttpRequest httpRequest;
+
+        String authHeader = httpServletRequest.getHeader("Authorization");
+
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return null;
+        }
+
+//        return authHeader.substring(7); // bỏ "Bearer "
 
         // ----- Header -----
         HttpHeaders headers = new HttpHeaders();
@@ -81,7 +92,7 @@ public class Api extends AbstractApi {
 
         // ----- Body -----
         MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
-        body.add("token", request.getToken());
+        body.add("token", authHeader.substring(7));
         body.add("token_type_hint", "access_token");
 
         HttpEntity<MultiValueMap<String, String>> req =
@@ -97,17 +108,15 @@ public class Api extends AbstractApi {
 
         return response.getBody();
 
-//        var responseEntity = restTemplate.getForEntity(dnsNameMovie + "/v2/movie?Id=" + Id, UserExDto.class);
-//
-//        if (responseEntity.getStatusCode() == HttpStatus.NOT_FOUND) {
-//            log.error(String.format("No movie is found with Id %s", Id));
-//
-//        } else if (responseEntity.getStatusCode() != HttpStatus.OK) {
-//            log.error("An error occurred while processing your request");
-//
-//        }
-//
-//        return responseEntity.getBody();
+    }
+
+    @PostMapping(value = "/authenticate1")
+    public ResponseEntity<?> authenticate1(@RequestBody JwtRequest jwtRequest) {
+        JwtResponse jwtResponse = authenticateService.authenticateUerTXU(jwtRequest.getUsername(), jwtRequest.getPassword());
+        if (jwtResponse == null) {
+            throw new BadParameterException("Username or password is incorrect");
+        }
+        return ResponseEntity.ok(jwtResponse);
     }
 
 }
