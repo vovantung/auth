@@ -68,7 +68,7 @@ public class Api extends AbstractApi {
         return "Vo Van Tung";
     }
 
-    @GetMapping(value = "/user-info")
+    @PostMapping(value = "/user-info")
     public Map<String, Object> userInfo(@RequestBody UserInfoRequest request) {
 
         // ----- Header -----
