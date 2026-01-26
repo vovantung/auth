@@ -105,7 +105,8 @@ public class Api extends AbstractApi {
     }
 
     @PostMapping(value = "/authenticate")
-    public Map<String, Object> authenticate1(@RequestBody UserDto userDto) {
+//    public Map<String, Object> authenticate1(@RequestBody UserDto userDto) {
+    public ResponseEntity<?> authenticate1(@RequestBody UserDto userDto) {
         // ----- Header -----
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -121,12 +122,20 @@ public class Api extends AbstractApi {
         body.add("username", userDto.getUsername());
         body.add("password", userDto.getPassword());
 
-        HttpEntity<MultiValueMap<String, String>> req = new HttpEntity<>(body, headers);
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(body, headers);
 
-        // ----- Call -----
-        ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, req, Map.class);
+        try {
+            // ----- Call -----
+            ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, request, Map.class
+            );
 
-        return response.getBody();
+            // Trả nguyên status + body
+            return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
+
+        } catch (HttpStatusCodeException ex) {
+            // BẮT các status != 2xx (400, 401, 403, 500...)
+            return ResponseEntity.status(ex.getStatusCode()).body(ex.getResponseBodyAsString());
+        }
     }
 
 //    @PostMapping(value = "/refresh-token")
