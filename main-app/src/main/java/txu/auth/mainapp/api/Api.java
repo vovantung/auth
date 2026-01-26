@@ -8,6 +8,7 @@ import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpStatusCodeException;
 import txu.auth.mainapp.base.AbstractApi;
 import txu.auth.mainapp.dto.RefreshTokenRequest;
 import txu.auth.mainapp.dto.RoleDto;
@@ -128,13 +129,37 @@ public class Api extends AbstractApi {
         return response.getBody();
     }
 
-    @PostMapping(value = "/refresh-token")
-    public Map<String, Object> refresh_token(@RequestBody RefreshTokenRequest refreshTokenRequest) {
+//    @PostMapping(value = "/refresh-token")
+//    public Map<String, Object> refresh_token(@RequestBody RefreshTokenRequest refreshTokenRequest) {
+//        // ----- Header -----
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+//
+//        String basicAuth = Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes(StandardCharsets.UTF_8));
+//        headers.set(HttpHeaders.AUTHORIZATION, "Basic " + basicAuth);
+//
+//        // ----- Body -----
+//        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+//        body.add("grant_type", "refresh_token");
+//        body.add("refresh_token", refreshTokenRequest.getRefresh_token());
+//
+//        HttpEntity<MultiValueMap<String, String>> req = new HttpEntity<>(body, headers);
+//
+//        // ----- Call -----
+//        ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, req, Map.class);
+//
+//        return response.getBody();
+//    }
+
+    @PostMapping("/refresh-token")
+    public ResponseEntity<?> refreshToken(@RequestBody RefreshTokenRequest refreshTokenRequest) {
+
         // ----- Header -----
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
-        String basicAuth = Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes(StandardCharsets.UTF_8));
+        String basicAuth = Base64.getEncoder()
+                .encodeToString((clientId + ":" + clientSecret).getBytes(StandardCharsets.UTF_8));
         headers.set(HttpHeaders.AUTHORIZATION, "Basic " + basicAuth);
 
         // ----- Body -----
@@ -142,12 +167,20 @@ public class Api extends AbstractApi {
         body.add("grant_type", "refresh_token");
         body.add("refresh_token", refreshTokenRequest.getRefresh_token());
 
-        HttpEntity<MultiValueMap<String, String>> req = new HttpEntity<>(body, headers);
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(body, headers);
 
-        // ----- Call -----
-        ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, req, Map.class);
+        try {
+            // ----- Call -----
+            ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, request, Map.class
+            );
 
-        return response.getBody();
+            // Trả nguyên status + body
+            return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
+
+        } catch (HttpStatusCodeException ex) {
+            // BẮT các status != 2xx (400, 401, 403, 500...)
+            return ResponseEntity.status(ex.getStatusCode()).body(ex.getResponseBodyAsString());
+        }
     }
 
 }
