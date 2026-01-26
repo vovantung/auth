@@ -9,10 +9,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import txu.auth.mainapp.base.AbstractApi;
+import txu.auth.mainapp.dto.RefreshTokenRequest;
 import txu.auth.mainapp.dto.RoleDto;
 import txu.auth.mainapp.dto.UserDto;
-import txu.auth.mainapp.dto.UserExDto;
-import txu.auth.mainapp.dto.UserInfoRequest;
 import txu.auth.mainapp.entity.AccountEntity;
 import txu.auth.mainapp.security.AuthenticationService;
 import txu.auth.mainapp.security.JwtRequest;
@@ -20,7 +19,6 @@ import txu.auth.mainapp.security.JwtResponse;
 import txu.auth.mainapp.service.AccountService;
 import txu.auth.mainapp.util.RestTXUTemplate;
 import txu.common.exception.BadParameterException;
-import txu.common.exception.NotFoundException;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -50,7 +48,7 @@ public class Api extends AbstractApi {
     private final AccountService accountService;
     private  final RestTXUTemplate restTemplate;
 
-    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+    @RequestMapping(value = "/authenticate1", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest jwtRequest) {
         JwtResponse jwtResponse = authenticateService.authenticateUerTXU(jwtRequest.getUsername(), jwtRequest.getPassword());
         if (jwtResponse == null) {
@@ -105,7 +103,7 @@ public class Api extends AbstractApi {
 
     }
 
-    @PostMapping(value = "/authenticate1")
+    @PostMapping(value = "/authenticate")
     public Map<String, Object> authenticate1(@RequestBody UserDto userDto) {
         // ----- Header -----
         HttpHeaders headers = new HttpHeaders();
@@ -121,6 +119,28 @@ public class Api extends AbstractApi {
         body.add("grant_type", "password");
         body.add("username", userDto.getUsername());
         body.add("password", userDto.getPassword());
+
+        HttpEntity<MultiValueMap<String, String>> req = new HttpEntity<>(body, headers);
+
+        // ----- Call -----
+        ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, req, Map.class);
+
+        return response.getBody();
+    }
+
+    @PostMapping(value = "/refresh-token")
+    public Map<String, Object> refresh_token(@RequestBody RefreshTokenRequest refreshTokenRequest) {
+        // ----- Header -----
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        String basicAuth = Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes(StandardCharsets.UTF_8));
+        headers.set(HttpHeaders.AUTHORIZATION, "Basic " + basicAuth);
+
+        // ----- Body -----
+        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+        body.add("grant_type", "refresh_token");
+        body.add("refresh_token", refreshTokenRequest.getRefresh_token());
 
         HttpEntity<MultiValueMap<String, String>> req = new HttpEntity<>(body, headers);
 
