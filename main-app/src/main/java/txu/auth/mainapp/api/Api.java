@@ -74,9 +74,10 @@ public class Api extends AbstractApi {
     }
 
     @PostMapping(value = "/user-info")
-    public Map<String, Object> userInfo(HttpServletRequest httpServletRequest) {
+    public ResponseEntity<?> userInfo(HttpServletRequest httpServletRequest) {
 
         String authHeader = httpServletRequest.getHeader("Authorization");
+        log.info("Authorization header: {}", authHeader);
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return null;
@@ -97,10 +98,19 @@ public class Api extends AbstractApi {
         HttpEntity<MultiValueMap<String, String>> req =
                 new HttpEntity<>(body, headers);
 
-        // ----- Call -----
-        ResponseEntity<Map> response = restTemplate.exchange(introspectUrl, HttpMethod.POST, req, Map.class);
+        try {
+            // ----- Call -----
+            ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, req, Map.class
+            );
 
-        return response.getBody();
+            log.info("StatusCode:" + response.getStatusCode().toString());
+            // Trả nguyên status + body
+            return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
+
+        } catch (HttpStatusCodeException ex) {
+            // BẮT các status != 2xx (400, 401, 403, 500...)
+            return ResponseEntity.status(ex.getStatusCode()).body(ex.getResponseBodyAsString());
+        }
 
     }
 
@@ -127,6 +137,7 @@ public class Api extends AbstractApi {
         try {
             // ----- Call -----
             ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, request, Map.class
+
             );
 
             // Trả nguyên status + body
