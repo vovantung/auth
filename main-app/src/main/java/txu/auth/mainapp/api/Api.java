@@ -95,12 +95,11 @@ public class Api extends AbstractApi {
         body.add("token", authHeader.substring(7));
         body.add("token_type_hint", "access_token");
 
-        HttpEntity<MultiValueMap<String, String>> req =
-                new HttpEntity<>(body, headers);
+        HttpEntity<MultiValueMap<String, String>> req = new HttpEntity<>(body, headers);
 
         try {
             // ----- Call -----
-            ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, req, Map.class
+            ResponseEntity<Map> response = restTemplate.exchange(introspectUrl, HttpMethod.POST, req, Map.class
             );
 
             log.info("StatusCode:" + response.getStatusCode().toString());
