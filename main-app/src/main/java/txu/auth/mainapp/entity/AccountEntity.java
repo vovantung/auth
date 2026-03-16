@@ -51,9 +51,9 @@ public class AccountEntity implements Serializable {
     @Getter
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "ROLE_ID")
-    private RoleEntity role;
+//    @ManyToOne
+//    @JoinColumn(name = "ROLE_ID")
+//    private RoleEntity role;
 
     @ManyToOne
     @JoinColumn(name = "DEPARTMENT_ID")

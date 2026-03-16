@@ -10,6 +10,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 import txu.auth.mainapp.base.AbstractApi;
+import txu.auth.mainapp.dto.KeycloakCreateUserRequest;
 import txu.auth.mainapp.dto.RefreshTokenRequest;
 import txu.auth.mainapp.dto.RoleDto;
 import txu.auth.mainapp.dto.UserDto;
@@ -49,14 +50,14 @@ public class Api extends AbstractApi {
     private final AccountService accountService;
     private  final RestTXUTemplate restTemplate;
 
-    @RequestMapping(value = "/authenticate1", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest jwtRequest) {
-        JwtResponse jwtResponse = authenticateService.authenticateUerTXU(jwtRequest.getUsername(), jwtRequest.getPassword());
-        if (jwtResponse == null) {
-            throw new BadParameterException("Username or password is incorrect");
-        }
-        return ResponseEntity.ok(jwtResponse);
-    }
+//    @RequestMapping(value = "/authenticate1", method = RequestMethod.POST)
+//    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest jwtRequest) {
+//        JwtResponse jwtResponse = authenticateService.authenticateUerTXU(jwtRequest.getUsername(), jwtRequest.getPassword());
+//        if (jwtResponse == null) {
+//            throw new BadParameterException("Username or password is incorrect");
+//        }
+//        return ResponseEntity.ok(jwtResponse);
+//    }
 
     @GetMapping(value = "get-current-user")
     public AccountEntity getCurrentUser() {
@@ -201,5 +202,37 @@ public class Api extends AbstractApi {
             return ResponseEntity.status(ex.getStatusCode()).body(ex.getResponseBodyAsString());
         }
     }
+
+    @PostMapping("/create-user")
+    public ResponseEntity<?> createUser(HttpServletRequest request) {
+
+        String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set(HttpHeaders.AUTHORIZATION, authHeader);
+
+        KeycloakCreateUserRequest body = new KeycloakCreateUserRequest();
+        body.setUsername("kkkk");
+        body.setEnabled(true);
+        body.setEmail("kkkk@gmail.com");
+        body.setFirstName("KKKK");
+        body.setLastName("TTTT");
+
+        HttpEntity<KeycloakCreateUserRequest> entity =
+                new HttpEntity<>(body, headers);
+
+        try {
+            ResponseEntity<Void> response = restTemplate.exchange("https://keycloak.txuyen.com/admin/realms/master/users", HttpMethod.POST, entity, Void.class);
+            return ResponseEntity.status(response.getStatusCode()).build();
+
+        } catch (HttpStatusCodeException ex) {
+            return ResponseEntity.status(ex.getStatusCode()).body(ex.getResponseBodyAsString());
+        }
+    }
+
 
 }

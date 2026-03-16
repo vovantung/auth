@@ -36,11 +36,14 @@ public class CustomUserDetailsService implements UserDetailsService {
             return null;
         }
 
-//        String[] roles = user.getRole().split(",");
-        String[] roles = user.getRole().getName().split(","); // Tạm giữ logic cũ, ở đây là môt chuỗi gồm các role cách nhau  bởi dâu phẩy
-        // Trên thực tế đây là một role duy nhất
+        //Bỏ roles
 
-        List<GrantedAuthority> authorities = Arrays.stream(roles)
+////        String[] roles = user.getRole().split(",");
+//        String[] roles = user.getRole().getName().split(","); // Tạm giữ logic cũ, ở đây là môt chuỗi gồm các role cách nhau  bởi dâu phẩy
+//        // Trên thực tế đây là một role duy nhất
+
+//        List<GrantedAuthority> authorities = Arrays.stream(roles)
+        List<GrantedAuthority> authorities = Arrays.stream(new String[]{""})
                 .map(String::trim)
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
@@ -60,10 +63,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         UserDto userDto = new UserDto();
         userDto.setUsername(user.getUsername());
         userDto.setPassword(user.getPassword());
-        String[] roles = user.getRole().getName().split(",");
+//        String[] roles = user.getRole().getName().split(",");
         // Tạm ử dụng logic cũ, xem đây là một chuỗi chứa nhiều roles ngăn cách
         // nhau bởi dấu phẩy, tuy nhiên hiện tại role là duy nhất
-        userDto.setRole(String.join(",", roles));
+//        userDto.setRole(String.join(",", roles));
+        userDto.setRole(String.join(",", new String[]{""}));
+
         return userDto;
     }
 

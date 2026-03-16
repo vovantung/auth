@@ -24,39 +24,39 @@ public class AuthenticationService {
     private final CustomUserDetailsService customUserDetailsService;
     private final JwtTokenUtil jwtTokenUtil;
 
-    public JwtResponse authenticateUer(String username, String password) {
-        UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
-        if (userDetails == null) {
-            return null;
-        }
+//    public JwtResponse authenticateUer(String username, String password) {
+//        UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
+//        if (userDetails == null) {
+//            return null;
+//        }
+//
+//        // Xác thực người dùng đã được load vào UserDetails, tuy nhiên trong trường này không cần
+//        // authenticate người dùng vì chỉ cần kiểm tra có phải người dùng hợp lệ hay không để tạo
+//        // token đăng nhập cho người dùng này dùng trong các request tiếp sau đó.
+//        Authentication authentication = authenticate(username, password);
+//
+//        return new JwtResponse(jwtTokenUtil.generateToken(userDetails));
+//    }
+//
+//    public JwtResponse authenticateUerTXU(String username, String password) {
+//
+//        UserDto user = customUserDetailsService.loadUserByUsernameTXU(username);
+//        if (user == null) {
+//            return null;
+//        }
+//
+//        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//        passwordEncoder.encode(password);
+//        if (!passwordEncoder.matches(password, user.getPassword())) {
+//            throw new BadParameterException("Password is not correct!");
+//        }
+//
+//        return new JwtResponse(jwtTokenUtil.generateTokenTXU(user));
+//    }
 
-        // Xác thực người dùng đã được load vào UserDetails, tuy nhiên trong trường này không cần
-        // authenticate người dùng vì chỉ cần kiểm tra có phải người dùng hợp lệ hay không để tạo
-        // token đăng nhập cho người dùng này dùng trong các request tiếp sau đó.
-        Authentication authentication = authenticate(username, password);
-
-        return new JwtResponse(jwtTokenUtil.generateToken(userDetails));
-    }
-
-    public JwtResponse authenticateUerTXU(String username, String password) {
-
-        UserDto user = customUserDetailsService.loadUserByUsernameTXU(username);
-        if (user == null) {
-            return null;
-        }
-
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        passwordEncoder.encode(password);
-        if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new BadParameterException("Password is not correct!");
-        }
-
-        return new JwtResponse(jwtTokenUtil.generateTokenTXU(user));
-    }
-
-    public Authentication authenticate(String username, String password) throws AuthenticationException {
-        Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
-        return authenticationManager.authenticate(authentication);
-    }
+//    public Authentication authenticate(String username, String password) throws AuthenticationException {
+//        Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
+//        return authenticationManager.authenticate(authentication);
+//    }
 
 }
