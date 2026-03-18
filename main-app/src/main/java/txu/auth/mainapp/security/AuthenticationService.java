@@ -1,11 +1,11 @@
 package txu.auth.mainapp.security;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.authentication.AuthenticationManager;
+//import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.AuthenticationException;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,10 +20,10 @@ import java.util.Map;
 public class AuthenticationService {
 
 
-    private final AuthenticationManager authenticationManager;
-    private final CustomUserDetailsService customUserDetailsService;
-    private final JwtTokenUtil jwtTokenUtil;
-
+//    private final AuthenticationManager authenticationManager;
+//    private final CustomUserDetailsService customUserDetailsService;
+//    private final JwtTokenUtil jwtTokenUtil;
+//
 //    public JwtResponse authenticateUer(String username, String password) {
 //        UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
 //        if (userDetails == null) {
@@ -53,7 +53,7 @@ public class AuthenticationService {
 //
 //        return new JwtResponse(jwtTokenUtil.generateTokenTXU(user));
 //    }
-
+//
 //    public Authentication authenticate(String username, String password) throws AuthenticationException {
 //        Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
 //        return authenticationManager.authenticate(authentication);
