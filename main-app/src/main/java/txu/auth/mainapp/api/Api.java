@@ -19,6 +19,7 @@ import txu.auth.mainapp.util.RestTXUTemplate;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -95,6 +96,43 @@ public class Api extends AbstractApi {
             // ----- Call -----
             ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, request, Map.class
             );
+
+            // Trả nguyên status + body
+            return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
+
+        } catch (HttpStatusCodeException ex) {
+            // BẮT các status != 2xx (400, 401, 403, 500...)
+            return ResponseEntity.status(ex.getStatusCode()).body(ex.getResponseBodyAsString());
+        }
+    }
+
+    public String getAccessToken() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+        body.add("grant_type", "client_credentials");
+        body.add("client_id", clientId);
+        body.add("client_secret", clientSecret);
+        HttpEntity<?> request = new HttpEntity<>(body, headers);
+        ResponseEntity<Map> response = restTemplate.postForEntity(tokenUrl, request, Map.class);
+        return (String) response.getBody().get("access_token");
+    }
+
+    @PostMapping("/roles")
+    public ResponseEntity<?> roles() {
+//        // ----- Header -----
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(getAccessToken());
+        HttpEntity<?> request = new HttpEntity<>(headers);
+
+        // ----- Body -----
+//        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+//        body.add("grant_type", "refresh_token");
+//        body.add("refresh_token", refreshTokenRequest.getRefresh_token());
+//        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(null, headers);
+        try {
+//            ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, request, Map.class
+            ResponseEntity<List> response = restTemplate.exchange("https://keycloak.txuyen.com/admin/realms/master/roles", HttpMethod.GET, request, List.class);
 
             // Trả nguyên status + body
             return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
