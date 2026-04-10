@@ -44,6 +44,7 @@ public class Api extends AbstractApi {
 
     private  final RestTXUTemplate restTemplate;
 
+
     @PostMapping(value = "/authenticate")
 //    public Map<String, Object> authenticate1(@RequestBody UserDto userDto) {
     public ResponseEntity<?> authenticate(@RequestBody UserDto userDto) {
