@@ -1,0 +1,7 @@
+2026-04-10 10:38:01.744 INFO  [main] t.a.mainapp.MainAppApplicationTests - Starting MainAppApplicationTests using Java 17.0.10 with PID 31544 (started by Precision 7540 in D:\06-05-2025\auth\main-app)
+2026-04-10 10:38:01.746 INFO  [main] t.a.mainapp.MainAppApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-04-10 10:38:03.580 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-04-10 10:38:03.586 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-04-10 10:38:03.661 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 0 Redis repository interfaces.
+2026-04-10 10:38:06.034 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2026-04-10 10:38:06.384 INFO  [main] t.a.mainapp.MainAppApplicationTests - Started MainAppApplicationTests in 5.656 seconds (process running for 7.058)
